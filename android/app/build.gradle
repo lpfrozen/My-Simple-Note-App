@@ -1,0 +1,106 @@
+// plugins {
+//     id "com.android.application"
+//     id "kotlin-android"
+//     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+//     id "dev.flutter.flutter-gradle-plugin"
+// }
+
+// android {
+//     namespace = "com.example.test"
+//     compileSdk = flutter.compileSdkVersion
+//     // ndkVersion = flutter.ndkVersion
+//     ndkVersion = "25.1.8937393"
+
+//     // compileOptions {
+//     //     // sourceCompatibility = JavaVersion.VERSION_1_8
+//     //     // targetCompatibility = JavaVersion.VERSION_1_8
+//     //     sourceCompatibility = JavaVersion.VERSION_17
+//     //     targetCompatibility = JavaVersion.VERSION_17
+//     //     coreLibraryDesugaringEnabled  true
+//     // }
+//    compileOptions {
+//     sourceCompatibility JavaVersion.VERSION_17
+//     targetCompatibility JavaVersion.VERSION_17
+//     coreLibraryDesugaringEnabled true
+
+// }
+
+//     kotlinOptions {
+//        // jvmTarget = JavaVersion.VERSION_1_8
+//         jvmTarget = 17
+//     }
+
+//     defaultConfig {
+//         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+//         applicationId = "com.example.test"
+//         // You can update the following values to match your application needs.
+//         // For more information, see: https://flutter.dev/to/review-gradle-config.
+//         minSdk = flutter.minSdkVersion
+//         targetSdk = flutter.targetSdkVersion
+//         versionCode = flutter.versionCode
+//         versionName = flutter.versionName
+//     }
+
+//     buildTypes {
+//         release {
+//             // TODO: Add your own signing config for the release build.
+//             // Signing with the debug keys for now, so `flutter run --release` works.
+//             signingConfig = signingConfigs.debug
+//         }
+//     }
+// }
+
+// flutter {
+//     source = "../.."
+// }
+
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.test"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = "25.1.8937393" // Specify NDK version explicitly if needed
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled = true // Enable desugaring for additional Java 8+ features
+    }
+
+    kotlinOptions {
+        jvmTarget = "17" // Set JVM target for Kotlin compatibility
+    }
+
+    defaultConfig {
+        applicationId = "com.example.test" // Ensure this ID is unique
+        // minSdk = flutter.minSdkVersion
+         minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add signing config for release build
+            signingConfig = signingConfigs.debug // Temporary debug signing
+        }
+    }
+}
+
+dependencies {
+    // Add this dependency to resolve the desugaring issue
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3" // Check for latest version
+
+    // Other dependencies...
+}
+
+flutter {
+    source = "../.." // Set the source directory for Flutter
+}
