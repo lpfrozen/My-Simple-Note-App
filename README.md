@@ -1,4 +1,4 @@
-# test
+# My Simple Note app
 
 A new Flutter project.
 
