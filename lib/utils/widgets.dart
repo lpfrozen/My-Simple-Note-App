@@ -5,8 +5,7 @@ List<Color> colors = [
   const Color(0xffF28B83),
   const Color(0xFFFCBC05),
   const Color(0xFFFFF476),
-  const Color(0xFFCBFF90),
-  const Color(0xFFA7FEEA)
+  const Color(0xFFCBFF90)
 ];
 
 class PriorityPicker extends StatefulWidget {
